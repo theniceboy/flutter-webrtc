@@ -149,6 +149,16 @@ class RTCVideoViewState extends State<RTCVideoView> {
             div.appendChild(videoRenderer.videoElement!);
           });
     } else {
+      final image = capturedFrame != null
+          ? RawImage(
+              image: capturedFrame,
+              fit: switch (widget.objectFit) {
+                RTCVideoViewObjectFit.RTCVideoViewObjectFitContain =>
+                  BoxFit.contain,
+                RTCVideoViewObjectFit.RTCVideoViewObjectFitCover =>
+                  BoxFit.cover,
+              })
+          : null;
       return Stack(children: [
         Positioned.fill(
             child: HtmlElementView.fromTagName(
@@ -164,14 +174,9 @@ class RTCVideoViewState extends State<RTCVideoView> {
                 })),
         if (capturedFrame != null)
           Positioned.fill(
-              child: RawImage(
-                  image: capturedFrame,
-                  fit: switch (widget.objectFit) {
-                    RTCVideoViewObjectFit.RTCVideoViewObjectFitContain =>
-                      BoxFit.contain,
-                    RTCVideoViewObjectFit.RTCVideoViewObjectFitCover =>
-                      BoxFit.cover,
-                  })),
+              child: widget.mirror
+                  ? Transform.flip(flipX: true, child: image!)
+                  : image!),
       ]);
     }
   }
