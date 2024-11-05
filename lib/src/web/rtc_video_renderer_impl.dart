@@ -10,7 +10,7 @@ import 'package:dart_webrtc/dart_webrtc.dart';
 import 'package:web/web.dart' as web;
 
 const bool useHtmlElementView =
-    bool.fromEnvironment("WEBRTC_USE_HTML_ELEMENT_VIEW", defaultValue: false);
+    bool.fromEnvironment("WEBRTC_USE_HTML_ELEMENT_VIEW", defaultValue: true);
 
 // An error code value to error name Map.
 // See: https://developer.mozilla.org/en-US/docs/Web/API/MediaError/code
