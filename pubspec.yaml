@@ -10,7 +10,8 @@ dependencies:
   collection: ^1.17.0
   dart_webrtc:
     git:
-      url: 'https://github.com/zhuhaichao518/dart-webrtc'
+      url: 'https://github.com/jezell/dart-webrtc'
+      ref: 'a6a18675e48fc7d6b89aa798a18283add17a6b60'
   flutter:
     sdk: flutter
   path_provider: ^2.0.2
